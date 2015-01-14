@@ -11,7 +11,7 @@ public class AbsenteeService{
         list.add(name);
     }
 
-    public List listOfAbsents() {
+    public List absents() {
         return list;
     }
 }
