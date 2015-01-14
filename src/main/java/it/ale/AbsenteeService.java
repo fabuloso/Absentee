@@ -1,17 +1,18 @@
 package it.ale;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AbsenteeService{
 
-    List<String> list = new ArrayList<String>();
+    private Map<Date, List<String>> register = new HashMap<>();
 
-    public void absent(String name) {
-        list.add(name);
+    public void absent(String name, Date date) {
+        List<String> names = register.getOrDefault(date, new ArrayList<String>());
+        names.add(name);
+        register.put(date, names);
     }
 
-    public List absents() {
-        return list;
+    public List<String> absentsOn(Date today) {
+        return register.get(today);
     }
 }
