@@ -4,5 +4,4 @@ notifications:
   email: dalfovo.alessandro@gmail.com
 jdk:
   - oraclejdk8
-  - oraclejdk7
   
