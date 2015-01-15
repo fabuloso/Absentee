@@ -3,4 +3,4 @@ script: mvn clean test
 notifications:
   email: dalfovo.alessandro@gmail.com
 jdk:
-- oraclejdk8
+  - oraclejdk8
