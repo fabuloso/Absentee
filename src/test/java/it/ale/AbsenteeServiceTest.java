@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Date;
 
+import static it.ale.AbsenteeServiceTest.YESTERDAY;
 import static java.lang.Integer.valueOf;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -13,6 +14,7 @@ public class AbsenteeServiceTest {
 
     private AbsenteeService service;
     public static final Date TODAY = new Date();
+    public static final Date YESTERDAY = new Date(1);
 
     @Before
     public void setup(){
@@ -33,5 +35,17 @@ public class AbsenteeServiceTest {
 
         assertTrue(service.absentsOn(TODAY).contains("Yoda"));
     }
+
+    @Test public void
+    realizes_that_yoda_was_absent_yesterday_and_today(){
+        service.absent("Yoda", YESTERDAY);
+        service.absent("Yoda", TODAY);
+
+        assertTrue(service.absentsOn(YESTERDAY).contains("Yoda"));
+        assertTrue(service.absentsOn(TODAY).contains("Yoda"));
+    }
+
+
+
 
 }

@@ -4,10 +4,19 @@ import java.util.*;
 
 public class AbsenteeService{
 
-    private Map<Date, List<String>> register = new HashMap<>();
+    private Map<Date, List<String>> register;
+
+    public AbsenteeService() {
+        register = new HashMap<>();
+    }
 
     public void absent(String name, Date date) {
-        List<String> names = register.getOrDefault(date, new ArrayList<String>());
+        List<String> names = register.get(date);
+
+        if(names == null) {
+            names = new ArrayList<String>();
+        }
+
         names.add(name);
         register.put(date, names);
     }
