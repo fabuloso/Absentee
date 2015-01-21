@@ -2,26 +2,26 @@ package it.ale;
 
 import java.util.*;
 
+import static org.apache.commons.collections.MapUtils.getObject;
+
 public class AbsenteeService{
 
-    private Map<Date, List<String>> register;
+    private Map<Date, List<String>> presenceBook = new HashMap<Date, List<String>>();
 
     public AbsenteeService() {
-        register = new HashMap<>();
     }
 
     public void absent(String name, Date date) {
-        List<String> names = register.get(date);
-
-        if(names == null) {
-            names = new ArrayList<String>();
-        }
-
+        List<String> names = absenteeUsersOn(date);
         names.add(name);
-        register.put(date, names);
+        presenceBook.put(date, names);
     }
 
     public List<String> absentsOn(Date today) {
-        return register.get(today);
+        return presenceBook.get(today);
+    }
+
+    private List<String> absenteeUsersOn(Date date) {
+        return (List<String>) getObject(presenceBook, date, new ArrayList<String>());
     }
 }
