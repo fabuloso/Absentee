@@ -38,4 +38,8 @@ public class AbsenteeService {
     private List<String> absenteeUsersOn(Date date) {
         return (List<String>) getObject(presenceBook, date, new ArrayList<String>());
     }
+
+    public void addLesson(Date lessonDate) {
+        presenceBook.put(lessonDate, new ArrayList<String>());
+    }
 }

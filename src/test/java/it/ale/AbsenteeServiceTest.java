@@ -1,6 +1,8 @@
 package it.ale;
 
+import org.apache.commons.collections.ListUtils;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
@@ -9,7 +11,10 @@ import java.util.List;
 import static it.ale.AbsenteeServiceTest.YESTERDAY;
 import static java.lang.Integer.valueOf;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
+import static org.apache.commons.collections.ListUtils.EMPTY_LIST;
+import static org.apache.commons.collections.ListUtils.isEqualList;
 
 public class AbsenteeServiceTest {
 
@@ -54,6 +59,20 @@ public class AbsenteeServiceTest {
 
         List<Date> list = service.absentDatesFor("Yoda");
         assertEquals(list.get(0), YESTERDAY);
+    }
 
+    @Test public void
+    shows_that_nobody_was_absents_today(){
+        service.addLesson(TODAY);
+
+        assertTrue(isEqualList(EMPTY_LIST, service.absentsOn(TODAY)));
+    }
+
+    @Ignore
+    @Test public void
+    if_Yoda_is_absents_but_there_is_no_lesson_nothing_happends() throws Exception {
+        service.absent("Yoda", TODAY);
+
+        assertFalse(service.absentsOn(TODAY).contains("Yoda"));
     }
 }
