@@ -4,7 +4,7 @@ import java.util.*;
 
 import static org.apache.commons.collections.MapUtils.getObject;
 
-public class AbsenteeService{
+public class AbsenteeService {
 
     private Map<Date, List<String>> presenceBook = new HashMap<Date, List<String>>();
 
@@ -19,6 +19,20 @@ public class AbsenteeService{
 
     public List<String> absentsOn(Date today) {
         return presenceBook.get(today);
+    }
+
+    public List<Date> absentDatesFor(String name) {
+        return retrieveTheAbsenteeOn(name, presenceBook.keySet());
+    }
+
+    private List<Date> retrieveTheAbsenteeOn(String name, Set<Date> dates) {
+        List<Date> absenteeDates = new ArrayList<Date>();
+        for (Date date : dates) {
+            if (presenceBook.get(date).contains(name)) {
+                absenteeDates.add(date);
+            }
+        }
+        return absenteeDates;
     }
 
     private List<String> absenteeUsersOn(Date date) {

@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.List;
 
 import static it.ale.AbsenteeServiceTest.YESTERDAY;
 import static java.lang.Integer.valueOf;
@@ -46,6 +47,13 @@ public class AbsenteeServiceTest {
     }
 
 
+    @Test public void
+    shows_all_the_absents_for_yoda() throws Exception {
+        service.absent("Yoda", YESTERDAY);
+        service.absent("Yoda", TODAY);
 
+        List<Date> list = service.absentDatesFor("Yoda");
+        assertEquals(list.get(0), YESTERDAY);
 
+    }
 }
