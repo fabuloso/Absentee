@@ -1,6 +1,5 @@
 package it.ale;
 
-import org.apache.commons.collections.ListUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -8,11 +7,7 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.List;
 
-import static it.ale.AbsenteeServiceTest.YESTERDAY;
-import static java.lang.Integer.valueOf;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 import static org.apache.commons.collections.ListUtils.EMPTY_LIST;
 import static org.apache.commons.collections.ListUtils.isEqualList;
 
