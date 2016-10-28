@@ -17,8 +17,8 @@ public class AbsenteeService {
         presenceBook.put(date, names);
     }
 
-    public List<String> absentsOn(Date today) {
-        return presenceBook.get(today);
+    public List<String> absentsOn(Date date) {
+        return presenceBook.get(date);
     }
 
     public List<Date> absentDatesFor(String name) {
