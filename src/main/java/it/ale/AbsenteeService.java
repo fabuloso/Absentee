@@ -6,7 +6,7 @@ import static org.apache.commons.collections.MapUtils.getObject;
 
 public class AbsenteeService {
 
-    private Map<Date, List<String>> presenceBook = new HashMap<Date, List<String>>();
+    private Map<Date, List<String>> presenceBook = new HashMap<>();
 
     public AbsenteeService() {
     }
@@ -26,7 +26,7 @@ public class AbsenteeService {
     }
 
     private List<Date> retrieveTheAbsenteeOn(String name, Set<Date> dates) {
-        List<Date> absenteeDates = new ArrayList<Date>();
+        List<Date> absenteeDates = new ArrayList<>();
         for (Date date : dates) {
             if (presenceBook.get(date).contains(name)) {
                 absenteeDates.add(date);
